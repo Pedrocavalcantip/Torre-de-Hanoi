@@ -27,8 +27,8 @@ section .data
     torre_destino   db  'C',    NULL
 
 section .bss
-    total_discos resb 1  ; // Buffer para armazenar o número de discos (reserve byte)
-    buffer_numero_discos resb 2 ; // Buffer para entrada do usuário (1 dígito + Enter)
+    total_discos resb 1                 ; Buffer para armazenar o número de discos (reserve byte)
+    buffer_numero_discos resb 2         ; Buffer para entrada do usuário (1 dígito + Enter)
 
 section .text
     global _start
