@@ -34,23 +34,23 @@ section .text
     global _start
 _start:
 execução_principal:
-    mov ecx, numero_discos          ;carrega o endereço da string de solicitação em ecx
-    call exibir_string              ;chama a função exibir_string para exibir a mensagem
+    mov ecx, numero_discos              ;carrega o endereço da string de solicitação em ecx
+    call exibir_string                  ;chama a função exibir_string para exibir a mensagem
 
-    mov ecx, buffer_numero_discos   ;carrega o endereço do buffer de entrada em ecx
-    call leitura_de_entrada          ;chama a função leitura_de_entrada para capturar a entrada do usuário
-    call verificar_entrada           ;chama a função verificar_entrada para validar a entrada do usuário
-    call converter_caractere         ;chama a função converter_caractere para converter o caractere ASCII em um número
+    mov ecx, buffer_numero_discos       ;carrega o endereço do buffer de entrada em ecx
+    call leitura_de_entrada             ;chama a função leitura_de_entrada para capturar a entrada do usuário
+    call verificar_entrada              ;chama a função verificar_entrada para validar a entrada do usuário
+    call converter_caractere            ;chama a função converter_caractere para converter o caractere ASCII em um número
 
-    mov [total_discos], al           ;armazena o número de discos convertido no buffer total_discos
-    call resolver_hanoi            ;chama a função resolver_hanoi para iniciar o processo de resolução do problema
+    mov [total_discos], al              ;armazena o número de discos convertido no buffer total_discos
+    call resolver_hanoi                 ;chama a função resolver_hanoi para iniciar o processo de resolução do problema
 
-    mov ecx, texto_finzalizado        ;carrega o endereço da string de finalização em ecx
-    call exibir_string                ;chama a função exibir_string para exibir a mensagem de finalização
+    mov ecx, texto_finzalizado          ;carrega o endereço da string de finalização em ecx
+    call exibir_string                  ;chama a função exibir_string para exibir a mensagem de finalização
 
-    mov eax, SYS_EXIT                 ;carrega o syscall de saída em eax
-    mov ebx, RET_EXIT                ;define o código de saída (0)
-    int SYS_CALL                      ;chama a interrupção para sair do programa
+    mov eax, SYS_EXIT                   ;carrega o syscall de saída em eax
+    mov ebx, RET_EXIT                   ;define o código de saída (0)
+    int SYS_CALL                        ;chama a interrupção para sair do programa
 
 
 ;função que resolve o problema de hanoi.
