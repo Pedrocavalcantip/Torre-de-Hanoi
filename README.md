@@ -5,6 +5,11 @@ Este projeto é uma implementação do clássico quebra-cabeça matemático "Tor
 Este foi um projeto acadêmico desenvolvido para aprofundar os conhecimentos em programação de baixo nível, gerenciamento de memória, chamadas de sistema (syscalls) do Linux e a implementação de algoritmos recursivos em Assembly.
 Este projeto foi desenvolvido por Hugo Crasto e Pedro Cavalcanti.
 
+### Divisão de Responsabilidades
+
+* **Hugo Crasto:** Responsável pelo desenvolvimento das **funções auxiliares** que dão suporte ao programa, como as rotinas de entrada/saída de dados, validação da entrada do usuário e as funções de conversão entre caracteres e números.
+* **Pedro Cavalcanti:** Responsável pela lógica central do algoritmo, incluindo a implementação da **recursão** (`mover_varios_discos`), do **caso base** (`mover_um_disco`) e pela definição das constantes e variáveis globais do programa (syscalls, mensagens, etc.).
+
 ## Tecnologias Utilizadas
 * **Linguagem:** Assembly (NASM - Netwide Assembler)
 * **Arquitetura:** x86 (32-bit)
