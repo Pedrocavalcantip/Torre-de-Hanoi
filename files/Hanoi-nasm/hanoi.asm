@@ -129,6 +129,19 @@ resolver_hanoi:
     ret                                ;retorna da função resolver_hanoi
 
 
+; imprime uma string na tela, um caractere por vez, até encontrar um marcador de finalo (NULL).
+exibir_string:
+    push ecx                            ;salva o valor de ecx na pilha
+    loop_exibir:
+        mov al, [ecx]                   ;carrega o caractere atual da string em al
+        cmp al, NULL                    ;compara se o caractere é o marcador de final (NULL)
+        je fim_exibir                   ;se for NULL, salta para fim_exibir
+        call escrita_de_caractere      ;chama a função escrita_de_caractere para exibir o caractere
+        inc ecx                         ;incrementa ecx para o próximo caractere
+        jmp loop_exibir                 ;volta para o início do loop para exibir o próximo caractere
+    fim_exibir:
+        pop ecx                         ;recupera o valor de ecx da pilha
+        ret
 
 
 ;função que converte o caractere ASCII da entrada em um número.
@@ -137,16 +150,6 @@ converter_caractere:
     sub al, '0'                         ;subtrai o valor ASCII de '0' para converter o caractere em um número (ex: '4' -> 4).
     ret
 
-
-;exibe o numero do disco na tela
-escrita_numero_disco:
-    ;converte o numero em total_discos para caracterete e exibe.
-    mov al, [total_discos]              ;carrega o número de discos em al
-    add al, '0'                         ;Soma o valor ASCII de '0' para converter o número em caractere 
-    mov [buffer_numero_discos], al      ;armazena o caractere convertido no buffer de entrada
-    mov ecx, buffer_numero_discos       ;carrega o endereço do buffer de entrada em ecx
-    call escrita_de_caractere              ;chama a função escrita_caractere para exibir o caractere
-    ret
 
 ;verificar a entrada do usuario.
 verificar_entrada:
@@ -190,17 +193,12 @@ escrita_de_caractere:
     int SYS_CALL                        ;chama a interrupção para escrever o caractere
     ret
 
-
-; imprime uma string na tela, um caractere por vez, até encontrar um marcador de finalo (NULL).
-exibir_string:
-    push ecx                            ;salva o valor de ecx na pilha
-    loop_exibir:
-        mov al, [ecx]                   ;carrega o caractere atual da string em al
-        cmp al, NULL                    ;compara se o caractere é o marcador de final (NULL)
-        je fim_exibir                   ;se for NULL, salta para fim_exibir
-        call escrita_de_caractere      ;chama a função escrita_de_caractere para exibir o caractere
-        inc ecx                         ;incrementa ecx para o próximo caractere
-        jmp loop_exibir                 ;volta para o início do loop para exibir o próximo caractere
-    fim_exibir:
-        pop ecx                         ;recupera o valor de ecx da pilha
-        ret
+;exibe o numero do disco na tela
+escrita_numero_disco:
+    ;converte o numero em total_discos para caracterete e exibe.
+    mov al, [total_discos]              ;carrega o número de discos em al
+    add al, '0'                         ;Soma o valor ASCII de '0' para converter o número em caractere 
+    mov [buffer_numero_discos], al      ;armazena o caractere convertido no buffer de entrada
+    mov ecx, buffer_numero_discos       ;carrega o endereço do buffer de entrada em ecx
+    call escrita_de_caractere              ;chama a função escrita_caractere para exibir o caractere
+    ret
