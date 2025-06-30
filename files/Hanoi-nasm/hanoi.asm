@@ -92,10 +92,10 @@ resolver_hanoi:
     push word [torre_destino]          ;salva a torre auxiliar na pilha
 
     ; principal chamada recursiva, move os discos de auxiliar para destino. "Engana" a função com a troca de torres.
-    mov dx, [torre_auxiliar]           ;carrega a torre auxiliar em dx
-    mov cx, [torre_destino]            ;carrega a torre de destino em cx
-    mov [torre_destino], dx            ;atualiza a torre de destino com a torre auxiliar
-    mov [torre_auxiliar], cx           ;atualiza a torre auxiliar com a torre de destino 
+    mov ax, [torre_auxiliar]           ;carrega a torre auxiliar em ax
+    mov bx, [torre_destino]            ;carrega a torre de destino em bx
+    mov [torre_destino], ax            ;atualiza a torre de destino com a torre auxiliar
+    mov [torre_auxiliar], bx           ;atualiza a torre auxiliar com a torre de destino 
 
     call resolver_hanoi                ;chama a função recursiva para mover os discos
 
@@ -119,10 +119,10 @@ resolver_hanoi:
     call exibir_string                 ;chama a função exibir_string para exibir a torre de destino
     mov ecx, LF                        ;carrega o endereço da quebra de linha em ecx
     call escrita_de_caractere          ;chama a função escrita_caractere para exibir
-    mov dx, [torre_auxiliar]           ;carrega a torre auxiliar em dx
-    mov cx, [torre_origem]             ;carrega a torre de origem em cx
-    mov [torre_origem], dx             ;atualiza a torre de origem com a torre auxiliar
-    mov [torre_auxiliar], cx           ;atualiza a torre de destino com a torre de origem
+    mov ax, [torre_auxiliar]           ;carrega a torre auxiliar em ax
+    mov bx, [torre_origem]             ;carrega a torre de origem em bx
+    mov [torre_origem], ax             ;atualiza a torre de origem com a torre auxiliar
+    mov [torre_auxiliar], bx           ;atualiza a torre de destino com a torre de origem
     call resolver_hanoi                ;chama a função recursiva para mover os discos restantes
 
     fim_hanoi:
